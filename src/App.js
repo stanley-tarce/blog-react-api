@@ -1,7 +1,7 @@
 import { useRoutes } from 'react-router-dom'
 import { SignUp, SignIn, Main } from './Pages'
 import { Toaster } from 'react-hot-toast'
-import { CreateCategory, ShowCategory } from './Pages/Category';
+import { CreateCategory, ShowCategory, UpdateCategory } from './Pages/Category';
 function App() {
   let element = useRoutes([
     { path: '/', element: <SignIn /> },
@@ -9,7 +9,11 @@ function App() {
     {
       path: '/main', element: <Main />, children: [
         { path: 'create', element: <CreateCategory /> },
-        { path: ':category_id', element: <ShowCategory /> }
+        {
+          path: ':category_id', element: <ShowCategory />, children: [
+            { path: 'update', element: <UpdateCategory /> }
+          ]
+        },
       ]
     },
     // {

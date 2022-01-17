@@ -11,6 +11,7 @@ function Main() {
             console.log(response.data)
             if (response.data.length !== 0) {
                 setData({ ...data, categories: [...response.data] })
+                console.log(response.data)
             }
 
         })
@@ -20,7 +21,7 @@ function Main() {
         sign_out(headers).then(response => {
             console.log(response)
             setUser({})
-            setData({ categories: [], tasks: [] })
+            setData({ categories: [], tasks: {} })
             setHeaders({})
 
         })

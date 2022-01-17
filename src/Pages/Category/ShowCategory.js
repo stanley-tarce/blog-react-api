@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react'
 import { useNavigate, useParams, Outlet, useLocation } from 'react-router-dom'
 import { CreateContext } from '../../ContextStore'
 import { categories_delete, tasks_index, tasks_today, } from '../../API/api'
+import toast from 'react-hot-toast'
 
 
 
@@ -10,10 +11,10 @@ function ShowCategory() {
     const { category_id } = useParams()
     const location = useLocation()
     const mainCategoryButtons = [
-        { name: 'Update Category', click: () => navigate('updatecategory') },
+        { name: 'Update Category', click: () => navigate('update') },
         {
             name: 'Delete Category', click: () => {
-                categories_delete(headers, category_id).then(res => console.log(res))
+                categories_delete(headers, category_id).then(res => toast.success(res.data.message))
                 return navigate('/main')
             }
         }]
@@ -38,7 +39,7 @@ function ShowCategory() {
     let category = data.categories.filter(category => category.id === category_id)[0]
     return (
         <div className="w-full h-full" >
-            <div className="w-full h-[50px] flex justify-between items-center px-3 border-b-shadow border-b-2 gap-1">
+            <div className="w-full h-[50px] flex justify-between items-center px-3 gap-1">
                 <p className="w-auto h-auto  font-roboto font-bold text-[14px] mr-[60px]">{category && category.name}</p>
                 <div className='w-auto h-[100%] flex gap-3'>
                     {mainCategoryButtons.map(({ name, click }, index) =>
