@@ -7,11 +7,16 @@ import toast from 'react-hot-toast'
 
 
 function ShowCategory() {
-    const { headers, data, setData } = useContext(CreateContext)
+    const { headers, data, setData, setUpdateCategory } = useContext(CreateContext)
     const { category_id } = useParams()
     const location = useLocation()
     const mainCategoryButtons = [
-        { name: 'Update Category', click: () => navigate('update') },
+        {
+            name: 'Update Category', click: () => {
+                setUpdateCategory(data.categories.filter(category => category.id === category_id)[0].name)
+                return navigate('update')
+            }
+        },
         {
             name: 'Delete Category', click: () => {
                 categories_delete(headers, category_id).then(res => toast.success(res.data.message))
@@ -19,7 +24,7 @@ function ShowCategory() {
             }
         }]
     const mainTaskButtons = [
-        { name: 'Create Task', click: () => navigate(`taskcreate`) },
+        { name: 'Create Task', click: () => navigate(`create`) },
         { name: "Show Today's Task", click: () => !location.pathname.includes('today') ? navigate(`today`) : console.log("Already on Today") },
         { name: 'Show All Task', click: () => navigate(``) }
     ]

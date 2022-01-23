@@ -7,14 +7,17 @@ function Main() {
     const navigate = useNavigate()
     const location = useLocation()
     useEffect(() => {
-        categories_index(headers).then(response => {
-            console.log(response.data)
-            if (response.data.length !== 0) {
-                setData({ ...data, categories: [...response.data] })
+        let timer = setTimeout(() => {
+            categories_index(headers).then(response => {
                 console.log(response.data)
-            }
+                if (response.data.length !== 0) {
+                    setData(data => ({ ...data, categories: [...response.data] }))
+                    console.log(response.data)
+                }
 
-        })
+            })
+        }, 1000)
+        return () => { clearTimeout(timer) }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [location.pathname])
     const logout = () => {

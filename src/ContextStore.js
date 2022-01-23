@@ -5,17 +5,24 @@ function ContextStore({ children }) {
     const [user, setUser] = useState({})
     const [data, setData] = useState({
         categories: [],
-        tasks: {}
+        tasks: { all: [], today: [] }
     })
+    const [showAllTask, setShowAllTask] = useState(true)
+    const [updateCategory, setUpdateCategory] = useState('')
     let context = {
         headers,
         user,
         data,
+        updateCategory,
+        showAllTask,
 
         setHeaders,
         setUser,
-        setData
+        setData,
+        setUpdateCategory,
+        setShowAllTask
     }
+
     return (
         <CreateContext.Provider value={context}>
             {children}

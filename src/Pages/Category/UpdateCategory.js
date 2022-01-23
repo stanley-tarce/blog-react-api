@@ -1,33 +1,22 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import { useNavigate, useParams } from 'react-router'
 import { categories_update } from '../../API/api'
 import { CreateContext } from '../../ContextStore'
 import toast from 'react-hot-toast'
 function UpdateCategory() {
-
     const { category_id } = useParams()
     const navigate = useNavigate()
-    const { headers, data } = useContext(CreateContext)
-    const { categories } = data
-    const categoryDetail = () => {
-        var container = []
-        for (let i = 0; i < categories.length; i++) {
+    const { headers, data, setData, updateCategory, setUpdateCategory } = useContext(CreateContext)
 
-            if (categories[i].id === category_id) {
-                container = [...categories]
-            }
-        }
-        return container
-    }
-    const [update, setUpdate] = useState(categoryDetail()[0].name)
+
     const createCategory = [
-        { label: 'Name:', type: 'text', value: update },
+        { label: 'Name:', type: 'text', value: updateCategory },
     ]
     const submitCategory = (e) => {
         e.preventDefault()
-        var data = { name: update }
-        categories_update(headers, category_id, data).then(response => toast.success(response.data.message))
-
+        var payloads = { name: updateCategory }
+        categories_update(headers, category_id, payloads).then(response => toast.success(response.data.message))
+        setUpdateCategory('')
         return navigate(-1)
     }
     return (
@@ -36,7 +25,7 @@ function UpdateCategory() {
                 {createCategory.map(({ label, ...others }) => (
                     <div className="w-full h-auto flex flex-col gap-3">
                         <label className="text-[14px] w-auto h-auto">{label}</label>
-                        <input onChange={(e) => setUpdate(e.target.value)} className="outline-none border-[1px] border-solid border-main-purple p-[10px] rounded-[5px]" {...others} />
+                        <input onChange={(e) => setUpdateCategory(e.target.value)} className="outline-none border-[1px] border-solid border-main-purple p-[10px] rounded-[5px]" {...others} />
                     </div>
                 ))}
                 <div className="w-full h-auto flex justify-start items-center gap-3">
