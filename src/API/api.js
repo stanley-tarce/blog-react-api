@@ -68,5 +68,5 @@ export const tasks_delete = (headers, category_id, task_id) => {
 }
 
 export const tasks_today = (headers, category_id) => {
-    return axios.get(`${URL}/api/v1/categories/${category_id}/tasks/today`, { headers: headers })
+    return axios.get(`${URL}/api/v1/categories/${category_id}/today`, { headers: headers })
 }

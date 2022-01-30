@@ -29,18 +29,7 @@ function ShowCategory() {
         { name: 'Show All Task', click: () => navigate(``) }
     ]
     const navigate = useNavigate()
-    const fetchData = Promise.all([tasks_index(headers, category_id), tasks_today(headers, category_id)])
-    useEffect(() => {
-        fetchData.then(
-            response => {
-                const [tasks, todays_task] = response
-                setData({
-                    ...data,
-                    tasks: { all: tasks.data, todays: todays_task.data }
-                })
-            }
-        )
-    }, [location.pathname])
+
     let category = data.categories.filter(category => category.id === category_id)[0]
     return (
         <div className="w-full h-full" >

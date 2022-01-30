@@ -19,7 +19,7 @@ function Main() {
         }, 1000)
         return () => { clearTimeout(timer) }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [location.pathname])
+    }, [])
     const logout = () => {
         sign_out(headers).then(response => {
             console.log(response)

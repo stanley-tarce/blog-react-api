@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { useNavigate, useParams } from 'react-router'
-import { categories_update } from '../../API/api'
+import { categories_index, categories_update } from '../../API/api'
 import { CreateContext } from '../../ContextStore'
 import toast from 'react-hot-toast'
 function UpdateCategory() {
@@ -15,9 +15,16 @@ function UpdateCategory() {
     const submitCategory = (e) => {
         e.preventDefault()
         var payloads = { name: updateCategory }
-        categories_update(headers, category_id, payloads).then(response => toast.success(response.data.message))
-        setUpdateCategory('')
-        return navigate(-1)
+        categories_update(headers, category_id, payloads).then(response => {
+            toast.success(response.data.message)
+            setUpdateCategory('')
+        }).then(response => {
+            categories_index(headers).then(response => {
+                setData({ ...data, categories: response.data }
+                )
+            })
+        }).then(response => navigate(-1))
+
     }
     return (
         <div className="w-screen h-screen top-0 left-0 absolute z-10 flex justify-center items-center bg-main-modal-blur">

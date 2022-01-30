@@ -1,11 +1,26 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { CreateContext } from '../../ContextStore'
-import { useNavigate } from 'react-router'
+import { useNavigate, useParams } from 'react-router'
+import { tasks_index, tasks_today } from '../../API/api'
 
 function AllTasks() {
-    const { data, showAllTask } = useContext(CreateContext)
+    const { data, showAllTask, headers, setData } = useContext(CreateContext)
+    const { category_id } = useParams()
     const { tasks } = data
     const navigate = useNavigate()
+    const fetchData = Promise.all([tasks_index(headers, category_id), tasks_today(headers, category_id)])
+    useEffect(() => {
+        fetchData.then(
+            response => {
+                const [tasks, todays_task] = response
+                setData({
+                    ...data,
+                    tasks: { all: tasks.data, todays: todays_task.data }
+                })
+                console.log("Updated")
+            }
+        )
+    }, [])
     return (
         <div className='w-full h-full'>
             {tasks && showAllTask === true ? tasks.all.length !== 0 ? tasks.all.map(({ id, title, task_date }, index) => (
