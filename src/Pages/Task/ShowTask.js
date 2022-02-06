@@ -59,8 +59,11 @@ function ShowTask() {
                         <input className="outline-none border-[1px] border-solid border-main-purple p-[10px] rounded-[5px]" {...others} />
                     </div>
                 ))}
-                <button onClick={(e) => submitCategory(e)} className="w-full h-[50px] bg-main-purple text-white text-[18px] font-bold px-2 rounded-[5px] hover:bg-purple-500">Create Task</button>
-                <button onClick={(e) => navigate(-1)} className="w-full h-[50px] bg-main-purple text-white text-[18px] font-bold px-2 rounded-[5px] hover:bg-purple-500">Cancel</button>
+                <button onClick={(e) => submitCategory(e)} className={`w-full h-[50px]  text-white text-[18px] font-bold px-2 rounded-[5px] ${disabled ? 'bg-white text-main-purple' : 'hover:bg-purple-500 bg-main-purple text-white'}`} disabled={disabled}>Update</button>
+                <button onClick={(e) => {
+                    setDisabled(true)
+                    return navigate(-1)
+                }} className="w-full h-[50px] bg-main-purple text-white text-[18px] font-bold px-2 rounded-[5px] hover:bg-purple-500" >Cancel</button>
             </div>
         </div>
     )
