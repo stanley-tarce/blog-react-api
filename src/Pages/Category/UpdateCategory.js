@@ -22,8 +22,9 @@ function UpdateCategory() {
             categories_index(headers).then(response => {
                 setData({ ...data, categories: response.data }
                 )
-            }).then(response => navigate(-1))
-        })
+            })
+        }).then(response => navigate(-1))
+
     }
     return (
         <div className="w-screen h-screen top-0 left-0 absolute z-10 flex justify-center items-center bg-main-modal-blur">

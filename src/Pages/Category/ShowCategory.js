@@ -1,13 +1,13 @@
 import React, { useContext, useEffect } from 'react'
 import { useNavigate, useParams, Outlet, useLocation } from 'react-router-dom'
 import { CreateContext } from '../../ContextStore'
-import { categories_delete, tasks_index, tasks_today, categories_index } from '../../API/api'
+import { categories_delete, tasks_index, tasks_today, } from '../../API/api'
 import toast from 'react-hot-toast'
 
 
 
 function ShowCategory() {
-    const { headers, data, setData, setUpdateCategory, setShowAllTask } = useContext(CreateContext)
+    const { headers, data, setData, setUpdateCategory } = useContext(CreateContext)
     const { category_id } = useParams()
     const location = useLocation()
     const mainCategoryButtons = [
@@ -19,15 +19,14 @@ function ShowCategory() {
         },
         {
             name: 'Delete Category', click: () => {
-                categories_delete(headers, category_id).then(res => toast.success(res.data.message)).then(r => {
-                    categories_index(headers).then(res => setData({ ...data, categories: res.data }))
-                }).then(r => navigate('/main'))
+                categories_delete(headers, category_id).then(res => toast.success(res.data.message))
+                return navigate('/main')
             }
         }]
     const mainTaskButtons = [
         { name: 'Create Task', click: () => navigate(`create`) },
-        { name: "Show Today's Task", click: () => setShowAllTask(false) },
-        { name: 'Show All Task', click: () => setShowAllTask(true) }
+        { name: "Show Today's Task", click: () => !location.pathname.includes('today') ? navigate(`today`) : console.log("Already on Today") },
+        { name: 'Show All Task', click: () => navigate(``) }
     ]
     const navigate = useNavigate()
 

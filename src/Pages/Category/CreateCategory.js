@@ -1,26 +1,20 @@
 import React, { useContext, useRef } from 'react'
 import { useNavigate } from 'react-router'
-import { categories_create, categories_index } from '../../API/api'
+import { categories_create } from '../../API/api'
 import { CreateContext } from '../../ContextStore'
-import toast from 'react-hot-toast'
 function CreateCategory() {
     const categoryNameRef = useRef()
     const navigate = useNavigate()
-    const { headers, setData, data } = useContext(CreateContext)
+    const { headers } = useContext(CreateContext)
     const createCategory = [
         { label: 'Name:', type: 'text', placeholder: 'Science', ref: categoryNameRef, },
     ]
     const submitCategory = (e) => {
         e.preventDefault()
         var data = { name: categoryNameRef.current.value }
-        categories_create(headers, data).then(re => {
-            toast.success("Category created successfully")
-            categories_index(headers).then(response => {
-                setData({ ...data, categories: response.data })
-            }).then(response => navigate('/main'))
-        })
+        categories_create(headers, data).then(response => console.log(response))
+        return navigate(-1)
     }
-
     return (
         <div className="w-screen h-screen top-0 left-0 absolute z-10 flex justify-center items-center bg-main-modal-blur ">
             <div className="w-[400px] h-[200px] bg-white p-10 gap-3 flex flex-col justify-center items-start">
