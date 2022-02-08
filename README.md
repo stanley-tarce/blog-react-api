@@ -5,7 +5,7 @@
 
 # Blog React
 
-Blog React  is the frontend website for the Avion Banking App.
+Blog React  is the frontend website for the Blog App.
 **To access the backend repository, please click this [link](https://github.com/stanley-tarce/blog-rails-api)**
 
 
