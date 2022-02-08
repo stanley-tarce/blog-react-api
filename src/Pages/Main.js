@@ -20,7 +20,7 @@ function Main() {
                     console.log(response.data)
                 }
                 else {
-                    return navigate('')
+                    return navigate('/main')
                 }
             })
         }, 1000)
