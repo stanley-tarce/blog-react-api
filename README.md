@@ -1,70 +1,63 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
 
-In the project directory, you can run:
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# Blog React
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Blog React  is the frontend website for the Avion Banking App.
+**To access the backend repository, please click this [link](https://github.com/stanley-tarce/blog-rails-api)**
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+ 
+### Live/Demo
+Please use this [link](https://blog-api-stan.herokuapp.com/) to access the app
 
-### `npm run build`
+### Credentials
+To access the app, simply ***create a user*** or you can use mine
+```
+username: stanleytarce18@gmail.com
+password: 123456
+```
+###  Objectives
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+ - The user should be able to create and login their acccount
+ - The app should let the users create their own categories
+ - In each categories, the app  should let the users create their own tasks
+ - The app should be able to show the users the tasks that are due on the present day
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Technologies used
+To create the frontend app, we used the following frameworks:
+ 1. React
+ 2. Material UI
+ 3. React Router
+ 4. React Hot Toast
 
-### `npm run eject`
+### Snapshots 
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Installation 
+Clone the repository inside your local directory and change the directory to the root of the file
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```sh
+git clone https://github.com/stanley-tarce/blog-react-api.git
+```
+Run this command to install the node modules
+```sh
+npm install
+```
+Once you are done, you can quickly run the app by using this command.
+```sh
+npm start
+```
+### Deployment 
+To deploy the app to production you can choose any of these methods I use
 
-## Learn More
+ 1. [GH Pages](https://github.com/gitname/react-gh-pages)
+ 2. [Vercel](https://vercel.com/guides/deploying-react-with-vercel)
+ 3. [Heroku](https://blog.heroku.com/deploying-react-with-zero-configuration)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Credits
+I would like to thank to my groupmate for working with the project and to my teachers in Avion School for making this possible.
