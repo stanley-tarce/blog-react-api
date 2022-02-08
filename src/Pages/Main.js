@@ -19,7 +19,9 @@ function Main() {
                     setData(data => ({ ...data, categories: [...response.data] }))
                     console.log(response.data)
                 }
-
+                else {
+                    return navigate('')
+                }
             })
         }, 1000)
         return () => { clearTimeout(timer) }
