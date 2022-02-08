@@ -3,6 +3,7 @@ export const CreateContext = createContext()
 function ContextStore({ children }) {
     const [headers, setHeaders] = useState({})
     const [user, setUser] = useState({})
+    const [createModal, setCreateModal] = useState(false)
     const [data, setData] = useState({
         categories: [],
         tasks: { all: [], today: [] }
@@ -20,7 +21,9 @@ function ContextStore({ children }) {
         setUser,
         setData,
         setUpdateCategory,
-        setShowAllTask
+        setShowAllTask,
+        createModal,
+        setCreateModal
     }
 
     return (

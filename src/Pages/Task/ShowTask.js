@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from 'react'
 import { useNavigate, useParams, useLocation } from 'react-router'
 import { CreateContext } from '../../ContextStore'
 import { tasks_delete, tasks_show, tasks_update } from '../../API/api'
+import toast from 'react-hot-toast'
 
 
 
@@ -24,7 +25,7 @@ function ShowTask() {
     }, [location.pathname])
 
     const taskButtons = [
-        { name: 'Update Task', onClick: () => setDisabled(!disabled) },
+        { name: 'Click to enable update!', onClick: () => setDisabled(!disabled) },
         { name: 'Delete Task', onClick: () => deleteTask() },
     ]
     const [disabled, setDisabled] = useState(true)
@@ -42,28 +43,28 @@ function ShowTask() {
         var data = {
             ...updateTask
         }
-        tasks_update(headers, category_id, task_id, data).then(response => console.log(response))
-        return navigate(-1)
+        tasks_update(headers, category_id, task_id, data).then(response => toast.success(response.data.message)).then(() => navigate(-1)).catch(error => toast.error("Error updating task"))
+
     }
     return (
         <div className="w-screen h-screen top-0 left-0 absolute z-10 flex justify-center items-center bg-main-modal-blur">
-            <div className="w-[auto] h-[auto] bg-main-purple-light px-[30px] py-[50px] gap-3 flex flex-col justify-center items-start">
-                <div className="w-full h-auto flex justify-between items-center">
+            <div className="w-[auto] h-[auto] bg-main-purple-light px-[30px] py-[50px] gap-3 flex flex-col justify-center border-[1px] border-main-purple rounded-md items-start">
+                <div className="w-full h-auto flex justify-between items-center gap-2">
                     {taskButtons.map(({ name, ...others }, index) => (
-                        <button key={index} className="w-full h-[50px] bg-main-purple text-white text-center text-[18px] font-bold px-2 rounded-[5px] hover:bg-purple-500" {...others}>{name}</button>
+                        <button key={index} className="w-full h-[50px] bg-main-purple text-white text-center text-[14px] font-medium px-1 rounded-[5px] hover:bg-purple-500" {...others}>{name}</button>
                     ))}
                 </div>
                 {createTask.map(({ label, ...others }) => (
                     <div className="w-full h-auto flex flex-col gap-3">
-                        <label className="text-[18px] w-auto h-auto">{label}</label>
-                        <input className="outline-none border-[1px] border-solid border-main-purple p-[10px] rounded-[5px]" {...others} />
+                        <label className="text-[14px] w-auto h-auto">{label}</label>
+                        <input className="outline-none p-[10px] rounded-[5px]" {...others} />
                     </div>
                 ))}
-                <button onClick={(e) => submitCategory(e)} className={`w-full h-[50px]  text-white text-[18px] font-bold px-2 rounded-[5px] ${disabled ? 'bg-white text-main-purple' : 'hover:bg-purple-500 bg-main-purple text-white'}`} disabled={disabled}>Update</button>
+                <button onClick={(e) => submitCategory(e)} className={`w-full h-[50px]  text-white text-[14px] font-bold px-2 rounded-[5px] ${disabled ? 'bg-white text-main-purple' : 'hover:bg-purple-500 bg-main-purple text-white'}`} disabled={disabled}>Update</button>
                 <button onClick={(e) => {
                     setDisabled(true)
                     return navigate(-1)
-                }} className="w-full h-[50px] bg-main-purple text-white text-[18px] font-bold px-2 rounded-[5px] hover:bg-purple-500" >Cancel</button>
+                }} className="w-full h-[50px] bg-main-purple text-white text-[14px] font-bold px-2 rounded-[5px] hover:bg-purple-500" >Cancel</button>
             </div>
         </div>
     )

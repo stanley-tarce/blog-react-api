@@ -3,6 +3,7 @@ import { CreateContext } from '../ContextStore'
 import { sign_in } from '../API/api'
 import { useNavigate } from 'react-router'
 import { toast } from 'react-hot-toast'
+import signinsvg from '../assets/undraw_dreamer_re_9tua.svg'
 
 function SignIn() {
     const navigate = useNavigate()
@@ -37,9 +38,11 @@ function SignIn() {
 
     return (
         <div className="w-screen h-screen flex justify-start items-center text-[14px]">
-            <div className="h-full w-[70%] bg-main-purple" />
-            <div className="h-full w-[30%] bg-white flex items-center justify-center">
-                <div className="font-roboto w-[100%] h-[70%] bg-transparent flex flex-col justify-start items-center gap-10 px-10">
+            <div className="h-full w-[70%] bg-main-purple flex justify-center items-center">
+                <img className='w-full h-full p-[200px]' src={signinsvg} alt="undraw_dreamer_re_9tua" />
+            </div>
+            <div className="h-full w-[30%] bg-main-purple flex items-center justify-center">
+                <div className="font-roboto w-[100%] h-[70%] bg-white flex flex-col justify-center items-center gap-4 px-10 mr-10">
                     <p className=" font-bold text-2xl w-full h-auto">Sign In</p>
                     <form className="w-full h-auto flex flex-col justify-start gap-4">
                         {SignInDetails.map(({ label, ...others }) => (

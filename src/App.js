@@ -1,14 +1,16 @@
 import { useRoutes } from 'react-router-dom'
 import { SignUp, SignIn, Main } from './Pages'
 import { Toaster } from 'react-hot-toast'
-import { CreateCategory, ShowCategory, UpdateCategory } from './Pages/Category';
+import { CreateCategory, ShowCategory, UpdateCategory, BlankCategory } from './Pages/Category';
 import { TaskDisplay, ShowTask, CreateTask } from './Pages/Task';
 function App() {
   let element = useRoutes([
     { path: '/', element: <SignIn /> },
     { path: '/signup', element: <SignUp /> },
+
     {
       path: '/main', element: <Main />, children: [
+        { path: '', element: <BlankCategory /> },
         { path: 'create', element: <CreateCategory /> },
         {
           path: ':category_id', element: <ShowCategory />, children: [

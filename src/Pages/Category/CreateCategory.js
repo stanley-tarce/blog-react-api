@@ -22,8 +22,8 @@ function CreateCategory() {
     }
 
     return (
-        <div className="w-screen h-screen top-0 left-0 absolute z-10 flex justify-center items-center bg-main-modal-blur ">
-            <div className="w-[400px] h-[200px] bg-white p-10 gap-3 flex flex-col justify-center items-start">
+        <div className="w-screen h-screen top-0 left-0 absolute z-10 flex justify-center items-center bg-main-modal-blur">
+            <div className="w-[400px] h-[200px]  rounded-md bg-white p-10 gap-3 flex flex-col justify-center items-start">
                 {createCategory.map(({ label, ...others }) => (
                     <div className="w-full h-auto flex flex-col gap-3 text-[14px]">
                         <label className="text-[14px] w-auto h-auto">{label}</label>

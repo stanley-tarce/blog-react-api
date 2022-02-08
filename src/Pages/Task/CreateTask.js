@@ -2,6 +2,7 @@ import React, { useRef, useContext } from 'react'
 import { useNavigate, useParams } from 'react-router'
 import { CreateContext } from '../../ContextStore'
 import { tasks_create } from '../../API/api'
+import toast from 'react-hot-toast'
 
 
 
@@ -24,20 +25,19 @@ function CreateCategory() {
             description: taskDescriptionRef.current.value,
             task_date: taskDateRef.current.value.toString()
         }
-        tasks_create(headers, category_id, data).then(response => console.log(response))
-        return navigate(-1)
+        tasks_create(headers, category_id, data).then(r => toast.success('Task Created')).then(() => navigate(-1)).catch(error => error.response.data.errors.forEach(error => toast.error(error)))
     }
     return (
         <div className="w-screen h-screen top-0 left-0 absolute z-10 flex justify-center items-center bg-main-modal-blur">
-            <div className="w-[auto] h-[auto] bg-main-purple-light px-[30px] py-[50px] gap-3 flex flex-col justify-center items-start">
+            <div className="w-[auto] h-[auto] border-[1px] border-main-purple rounded-md bg-main-purple-light px-[30px] py-[50px] gap-3 flex flex-col justify-center items-start">
                 {createTask.map(({ label, ...others }) => (
                     <div className="w-full h-auto flex flex-col gap-3">
-                        <label className="text-[18px] w-auto h-auto">{label}</label>
+                        <label className="text-[14px] w-auto h-auto">{label}</label>
                         <input className="outline-none border-[1px] border-solid border-main-purple p-[10px] rounded-[5px]" {...others} />
                     </div>
                 ))}
-                <button onClick={(e) => submitCategory(e)} className="w-full h-[50px] bg-main-purple text-white text-[18px] font-bold px-2 rounded-[5px] hover:bg-purple-500">Create Task</button>
-                <button onClick={(e) => navigate(-1)} className="w-full h-[50px] bg-main-purple text-white text-[18px] font-bold px-2 rounded-[5px] hover:bg-purple-500">Cancel</button>
+                <button onClick={(e) => submitCategory(e)} className="w-full h-[50px] bg-main-purple text-white text-[15px] font-medium px-2 rounded-[5px] hover:bg-purple-500">Create Task</button>
+                <button onClick={(e) => navigate(-1)} className="w-full h-[50px] bg-main-purple text-white text-[15px] font-medium px-2 rounded-[5px] hover:bg-purple-500">Cancel</button>
             </div>
         </div>
     )
