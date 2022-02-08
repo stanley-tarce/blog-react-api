@@ -14,7 +14,10 @@ function SignIn() {
         { label: 'Email:', type: 'email', placeholder: 'stanleytare18@gmail.com', ref: emailRef, },
         { label: 'Password:', type: 'password', placeholder: 'StanleyPogi123', ref: passwordRef, required: true }
     ]
-
+    const resetFields = () => {
+        emailRef.current.value = ''
+        passwordRef.current.value = ''
+    }
     const handleSubmit = (e) => {
         e.preventDefault()
         sign_in(emailRef.current.value, passwordRef.current.value)
@@ -52,7 +55,10 @@ function SignIn() {
                             </div>
                         ))}
                         <button onClick={(e) => handleSubmit(e)} className="w-[50%] h-[50px] bg-main-purple text-white text-[14px] font-bold px-2 rounded-[5px] hover:bg-purple-500">Enter</button>
-                        <p className="w-full h-auto text-[14px]">Not yet a member?<span className="text-main-purple cursor-pointer hover:text-purple-500" onClick={() => { navigate('/signup') }}> Click Here!</span></p>
+                        <p className="w-full h-auto text-[14px]">Not yet a member?<span className="text-main-purple cursor-pointer hover:text-purple-500" onClick={() => {
+                            resetFields()
+                            return navigate('/signup')
+                        }}> Click Here!</span></p>
                     </form>
                 </div>
             </div>
