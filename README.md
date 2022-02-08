@@ -35,7 +35,12 @@ To create the frontend app, we used the following frameworks:
  4. React Hot Toast
 
 ### Snapshots 
-
+<p align="center">
+  <img src="./src/assets/Blog/Blog%20Sign%20In.jpeg" width="900" alt="Picture1">
+ <img src="./src/assets/Blog/Blog%20Sign%20Up.jpeg" width="900" alt="Picture2">
+ <img src="./src/assets/Blog/Blog%20Main.jpeg" width="900" alt="Picture3">
+ <img src="./src/assets/Blog/Blog%20Create%20Category.jpeg" width="900" alt="Picture4">
+</p>
 
 
 ### Installation 
