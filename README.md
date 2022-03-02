@@ -11,7 +11,7 @@ Blog React  is the frontend website for the Blog App.
 
  
 ### Live/Demo
-Please use this [link](https://blog-api-stan.herokuapp.com/) to access the app
+Please use this [link](https://blog-react-api.vercel.app/) to access the app
 
 ### Credentials
 To access the app, simply ***create a user*** or you can use mine
